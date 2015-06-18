@@ -1,0 +1,5 @@
+= image_tag @post.image.url(:medium)
+.p
+  = @post.caption
+.p
+  = link_to "Edit Post", edit_post_path(@post)

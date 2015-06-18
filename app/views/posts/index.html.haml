@@ -1,0 +1,10 @@
+.posts-wrapper
+  -@posts.each do |post|
+    .post
+      .post-head
+        .name
+          Ben Walker
+      .image
+        =link_to (image_tag post.image.url(:medium)), post_path(post)
+      %p.caption
+        =post.caption

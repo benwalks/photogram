@@ -1,5 +1,13 @@
-= image_tag @post.image.url(:medium)
-.p
-  = @post.caption
-.p
-  = link_to "Edit Post", edit_post_path(@post)
+.posts-wrapper.row
+  .post
+    .post-head
+      .name
+        Ben Walker
+    .image.center-block
+      =image_tag @post.image.url(:medium)
+    %p.caption
+      =@post.caption
+    .text-center.edit-links
+      = link_to "Edit Post", edit_post_path(@post)
+      |
+      = link_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this job?" }

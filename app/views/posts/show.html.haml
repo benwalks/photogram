@@ -2,12 +2,16 @@
   .post
     .post-head
       .name
-        Ben Walker
+        = @post.user.user_name
     .image.center-block
       =image_tag @post.image.url(:medium)
     %p.caption
       =@post.caption
-    .text-center.edit-links
-      = link_to "Cancel", posts_path
-      |
-      = link_to "Edit Post", edit_post_path(@post)
+    - if @post.user == current_user
+      .text-center.edit-links
+        = link_to "Cancel", posts_path
+        |
+        = link_to "Edit Post", edit_post_path(@post)
+    - else
+      .text-center.edit-links
+        =link_to "Cancel", posts_path

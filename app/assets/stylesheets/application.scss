@@ -57,14 +57,24 @@ body {
 }
 
 .post-head {
+  flex-direction: row;
   height: 64px;
-  padding: 14px 20px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 24px;
   color: #125688;
   font-size: 15px;
   line-height: 18px;
-  .thumbnail {}
-  .name {
-    display: block;
+  .user-name, .time-ago {
+    display: inline;
+  }
+  .thumb-image {}
+  .user-name {
+    font-weight: 500;
+  }
+  .time-ago {
+    color: #A5A7AA;
+    float: right;
   }
 }
 
@@ -73,11 +83,13 @@ body {
   border-top: 1px solid #eeefef;
 }
 
-.caption {
-  padding: 24px 24px;
+.user-name {
+  color: #125688;
   font-size: 15px;
-  line-height: 18px;
+}
 
+.user-name, .comment-content {
+  display: inline;
 }
 
 .form-wrapper {
@@ -92,4 +104,63 @@ body {
 .edit-links {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+
+.post-bottom {
+  .caption {
+    margin-bottom: 7px;
+  }
+  .user-name {
+    font-weight: 500;
+    margin-right: 0.3em;
+  }
+  .caption-content {
+    margin-bottom: 7px;
+  }
+  .user-name, .caption-content {
+    display: inline;
+  }
+  margin-bottom: 7px;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.comment-like-form {
+  padding-top: 24px;
+  margin-top: 13px;
+  margin-left: 24px;
+  margin-right: 24px;
+  min-height: 68px;
+  align-items: center;
+  border-top: 1px solid #EEEFEF;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.comment {
+  margin-bottom: 7px;
+  .user-name {
+    font-weight: 500;
+    margin-right: 0.3em;
+  }
+}
+
+.comment-form {
+  flex-grow: 1;
+}
+
+#comment_content {
+  font-size: 15px;
+  line-height: 18px;
+  border: medium none;
+  width: 100%;
+  color: #4B4F54;
+}
+
+.delete-comment {
+  float: right;
 }

@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      # flash[:success] = "Comment successful."
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js
@@ -20,21 +19,23 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @post.comments.find(params[:id])
 
-    @comment.delete
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js
+    if @comment.user_id == current_user.id
+      @comment.delete
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     end
   end
 
   private
 
-  def comment_params
-    params.require(:comment).permit(:content)
-  end
+    def comment_params
+      params.require(:comment).permit(:content)
+    end
 
-  def set_post
-    @post = Post.find(params[:post_id])
-  end
+    def set_post
+      @post = Post.find(params[:post_id])
+    end
 
 end

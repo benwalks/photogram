@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
 
     if @comment.user_id == current_user.id
-      @comment.delete
+      @comment.destroy
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js

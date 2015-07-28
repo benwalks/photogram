@@ -1,9 +1,8 @@
 = render 'post', post: @post
-- if @post.user.id == current_user.id
-  .text-center.edit-links
+.text-center.edit-links
+  - if @post.user.id == current_user.id
     = link_to "Cancel", posts_path
     |
     = link_to "Edit Post", edit_post_path(@post)
-- else
-  .text-center.edit-links
+  - else
     =link_to "Cancel", posts_path

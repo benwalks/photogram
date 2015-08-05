@@ -1,8 +1,17 @@
-.form-wrapper
-  = simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f|
-    .form-group
-      = f.input :image
-    .form-group.text-center
-      = f.input :caption
-    .form-group.text-center
-      = f.button :submit, class: 'btn-success'
+.posts-wrapper
+  .post
+    .post-body
+      .image-wrap
+        = default_form_image(@post)
+        = simple_form_for @post, html: { multipart: true } do |f|
+          .row
+            .col-md-12.text-center
+              = f.error_notification
+          .container-fluid
+            .form-group.text-center
+              %h4 Upload an image:
+              = f.input :image, label: false, input_html: { onChange: 'loadFile(event)' }
+            .form-group.text-center
+              = f.input :caption, label: false, placeholder: 'Add your caption'
+            .form-group.text-center
+              = f.button :submit, class: 'btn-success btn-block'

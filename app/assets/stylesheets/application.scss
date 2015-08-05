@@ -13,15 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   background-color: #fafafa;
   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
+.alert {
+  margin-bottom: 0px;
+}
+
 /* ## NAVBAR CUSTOMISATIONS ## */
+
+.navbar {
+  margin-bottom: 0px;
+}
 
 .navbar-brand {
   a {
@@ -37,7 +51,7 @@ body {
 }
 
 .navbar-container {
-  width: 70%;
+  max-width: 640px;
   margin: 0 auto;
 }
 
@@ -139,18 +153,55 @@ body {
   justify-content: center;
 }
 
-/* ## Wrapper and styling for the new and edit views ## */
-
-.form-wrapper {
-  width: 60%;
-  margin: 20px auto;
-  background-color: #fff;
-  padding: 40px;
-  border: 1px solid #eeefef;
-  border-radius: 3px;
-}
+/* ## Wrapper and styling for the new, edit & devise views ## */
 
 .edit-links {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+
+.registration-bg {
+  padding-top: 4em;
+  height: 100%;
+  background-image: url(regbackg.jpg);
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login-bg {
+  padding-top: 4em;
+  height: 100%;
+  background-image: url(loginbg.jpg);
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.log-in{
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+  border: none;
+}
+
+.panel {
+  border-radius: 8px;
+}
+
+.panel-heading{
+  h1 {
+    text-align: center;
+  }
+}
+
+#image-preview {
+  margin: 0px auto;
+}
+
+#post_image {
+  padding: 1em;
+  margin: 0px auto;
 }

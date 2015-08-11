@@ -15,12 +15,12 @@
           .user-name
             = post.user.user_name
           = post.caption
-        - if post.comments.any?
           .comments{id: "comments_#{post.id}"}
-            .paginator{id: "#comments-paginator-#{post.id}"}
-              - unless post.comments.count <= 4
-                = link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"}
-            = render post.comments.last(4), post: post
+            - if post.comments.any?
+              .paginator{id: "#comments-paginator-#{post.id}"}
+                - unless post.comments.count <= 4
+                  = link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"}
+              = render post.comments.last(4), post: post
     .comment-like-form.row
       .like-button.col-sm-1
         %span(class="glyphicon glyphicon-heart-empty")

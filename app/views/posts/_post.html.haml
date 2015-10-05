@@ -3,7 +3,7 @@
     .post-head
       .thumb-img
       .user-name
-        = post.user.user_name
+        = link_to "#{post.user.user_name}", profile_path(post.user.user_name)
       .time-ago
         = time_ago_in_words post.created_at
     .image.center-block

@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = "Your post has been created!"
-      redirect_to posts_path
+      redirect_to root_path
     else
       flash[:alert] = "Your new post couldn't be created!  Please check the form."
       render :new
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:success] = "Post updated."
-      redirect_to posts_path
+      redirect_to root_path
     else
       flash[:alert] = "Update failed.  Please check the form."
       render :edit

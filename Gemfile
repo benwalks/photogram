@@ -24,6 +24,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'capybara', '~> 2.4.4'
-  gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec-rails', '~> 3.3.0'
   gem 'factory_girl_rails'
 end

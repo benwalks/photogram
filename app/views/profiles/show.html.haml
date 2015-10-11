@@ -1,2 +1,4 @@
+- if @user == current_user
+  = link_to 'Edit Profile', edit_profile_path(@user.user_name)
 -@posts.each do |post|
   = render 'posts/post', post: post

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   get ':user_name', to: 'profiles#show', as: :profile
+  get ':user_name/edit', to: 'profiles#edit', as: :edit_profile
 
   resources :posts do
     resources :comments

@@ -1,0 +1,20 @@
+.posts-wrapper
+  .post
+    .post-body
+      .image-wrap
+        = profile_avatar_select(@user)
+        = simple_form_for @user, html: { multipart: true } do |f|
+          .row
+            .col-md-12.text-center
+              = f.error_notification
+          .row
+            .col-md-6
+              .form-group.text-center
+                %h4 Change your profile image:
+                = f.input :image, label: false, input_html: { onChange: 'loadFile(event)' }
+            .col-md-6
+              .form-group.text-center
+                %p Update your bio
+                = f.input :bio, label: false
+          .form-group.text-center
+            = f.button :submit, class: 'btn-success btn-block'

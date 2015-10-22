@@ -1,4 +1,22 @@
-- if @user == current_user
-  = link_to 'Edit Profile', edit_profile_path(@user.user_name)
+.posts-wrapper
+  .row.profile-header
+    .col-md-6
+      .img-circle
+        = profile_avatar_select(@user)
+    .col-md-6
+      .user-name-and-follow
+        %h3.profile-user-name
+          = @user.user_name
+        %span
+          - if @user == current_user
+            = link_to 'Edit Profile', edit_profile_path(@user.user_name),
+                                      class: 'btn edit-button'
+      %p.profile-bio
+        = @user.bio
+      .user-statistics
+        %p
+          = pluralize @user.posts.count, 'post'
+
+
 -@posts.each do |post|
   = render 'posts/post', post: post

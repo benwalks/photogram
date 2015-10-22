@@ -1,7 +1,7 @@
 module ApplicationHelper
   def alert_for(flash_type)
     {
-      succes: 'alert-success text-center',
+      success: 'alert-success text-center',
       error: 'alert-danger text-center',
       alert: 'alert-warning text-center',
       notice: 'alert-info text-center'
@@ -18,7 +18,8 @@ module ApplicationHelper
   def profile_avatar_select(user)
     return image_tag user.avatar.url(:medium),
                      id: 'image-preview',
-                     class: 'img-responsive' if user.avatar.exists?
-    image_tag 'default-avatar.jpg', id: 'image-preview', class: 'img-responsive'
+                     class: 'img-responsive img-circle profile-image' if user.avatar.exists?
+    image_tag 'default-avatar.jpg', id: 'image-preview',
+                                    class: 'img-responsive img-circle profile-image'
   end
 end

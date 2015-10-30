@@ -3,30 +3,33 @@
     .post-head
       .thumb-img
       .user-name
-        = link_to post.user.user_name, profile_path(post.user.user_name)
+        =link_to post.user.user_name, profile_path(post.user.user_name)
       .time-ago
-        = time_ago_in_words post.created_at
+        =time_ago_in_words post.created_at
     .image.center-block
-      = link_to (image_tag post.image.url(:medium), class:'img-responsive'),
+      =link_to (image_tag post.image.url(:medium), class:'img-responsive'),
                  post_path(post)
     .post-bottom
+      = render 'posts/likes', post: post
       .caption
         .caption-content
           .user-name
-            = link_to post.user.user_name, profile_path(post.user.user_name)
-          = post.caption
+            =link_to post.user.user_name, profile_path(post.user.user_name)
+          =post.caption
           .comments{id: "comments_#{post.id}"}
-            - if post.comments.any?
+            -if post.comments.any?
               .paginator{id: "#comments-paginator-#{post.id}"}
-                - unless post.comments.count <= 4
-                  = link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"}
+                -unless post.comments.count <= 4
+                  =link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"}
               = render post.comments.last(4), post: post
     .comment-like-form.row
-      .like-button.col-sm-1
-        %span(class="glyphicon glyphicon-heart-empty")
+      .col-sm-1
+        =link_to '', like_post_path(post.id), remote: true,
+                                              id: "like_#{post.id}",
+                                              class: "glyphicon glyphicon-heart-empty"
       .comment-form.col-sm-11
-        = form_for([post, post.comments.build], remote: true) do |f|
-          = f.text_field :content, placeholder: 'Add a comment...',
+        =form_for([post, post.comments.build], remote: true) do |f|
+          =f.text_field :content, placeholder: 'Add a comment...',
                                    class: "comment_content",
                                    id: "comment_content_#{post.id}"
-          = f.submit 'New Comment', class: 'comment-submit-button' # Hidden with CSS
+          =f.submit 'New Comment', class: 'comment-submit-button' # Hidden with CSS

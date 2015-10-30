@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'viewing user profiles' do
+feature 'Liking posts' do
   background do
     user = create :user
     user_two = create(:user, id: 2,
@@ -12,15 +12,16 @@ feature 'viewing user profiles' do
     sign_in_with user
 
     visit '/'
-    first('.user-name').click_link 'Arnie'
   end
 
-  scenario 'visiting a profile page shows the user name in the url' do
-    expect(page.current_path).to eq(profile_path('Arnie'))
-  end
+  scenario 'can like a post' do
+    click_link 'like_1'
 
-  scenario "a profile page only shows the specified user's posts" do
-    expect(page).to have_content 'nofilter'
-    expect(page).to_not have_content 'different post yo'
+    expect(page).to have_css('div.liked-post')
+    expect(find('.post-likers')).to have_content('Arnie')
   end
+end
+
+feature 'Unliking posts' do
+
 end

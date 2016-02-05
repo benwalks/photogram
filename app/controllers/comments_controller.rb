@@ -41,8 +41,8 @@ class CommentsController < ApplicationController
 
   def create_notification(post, comment)
     return if post.user.id == current_user.id
-    Notification.create(user_id: current_user.id,
-                        notified_user_id: post.user.id,
+    Notification.create(user_id: post.user.id,
+                        notified_by_id: current_user.id,
                         post_id: post.id,
                         identifier: comment.id,
                         notice_type: 'comment')

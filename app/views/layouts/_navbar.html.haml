@@ -11,6 +11,8 @@
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
+            = render 'notifications/notification_dropdown'
+          %li
             = link_to "New Post", new_post_path
           %li
             = link_to "Logout", destroy_user_session_path, method: :delete

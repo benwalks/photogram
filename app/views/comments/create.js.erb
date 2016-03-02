@@ -1,8 +1,2 @@
 $('#comment_content_<%= @post.id %>').val('')
-if (Clicked){
-	$('#comments_<%= @post.id %>').append("<%=j render 'comments/comment', post: @post, comment: @comment %>");
-}
-else
-{
-	$('.more-comments').html("view all <%= @post.comments.count %> comments")
-}
+Clicked? $('#comments_<%= @post.id %>').append("<%=j render 'comments/comment', post: @post, comment: @comment %>") : $('.more-comments').html("view all <%= @post.comments.count %> comments")

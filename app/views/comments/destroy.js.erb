@@ -1,1 +1,3 @@
 $('#comments_<%= @post.id %>').html("<%= j render @post.comments, post: @post, comment: @comment %>");
+Append.comment_count -= 1
+console.log(Append.comment_count);

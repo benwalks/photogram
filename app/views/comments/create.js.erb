@@ -6,7 +6,7 @@ $(Append.id).attr('data-value', Append.comment_count);
 if (Append.comment || Append.open ){ $('#comments_<%= @post.id %>').append("<%=j render 'comments/comment', post: @post, comment: @comment %>"); }
 
 else if ((Append.comment && Append.open) === false && Append.link === true) { 
-	$('#comments_' + Append.post_id).append("<div class='paginator' id='#comments-paginator-" + Append.post_id + "'><a class='more-comments' id='more_comments_" + Append.post_id + "' data-post-id='" + Append.post_id + "' data-type='html' data-value='" + Append.comment_count + "' href='/posts/" + Append.post_id + "/comments'>view all " + Append.comment_count + " comments</a></div>"); 
+	$('#comments_' + Append.post_id).append("<div class='paginator' id='#comments-paginator-" + Append.post_id + "'><a class='more-comments' id='more_comments_" + Append.post_id + "' data-post-id='" + Append.post_id + "' data-type='html' data-remote='true' data-value='" + Append.comment_count + "' href='/posts/" + Append.post_id + "/comments'>view all " + Append.comment_count + " comments</a></div>"); 
 	ClickableCommentsLink(); 
 }
 

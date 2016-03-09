@@ -19,9 +19,9 @@
           .comments{id: "comments_#{post.id}"}
             -if post.comments.any?
               = render post.comments.first(4), post: post
-              .paginator{id: "#comments-paginator-#{post.id}"}
-                -unless post.comments.count <= 4
-                  =link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: {post_id: "#{post.id}", type: "html"}
+              -unless post.comments.count <= 4
+                .paginator{id: "#comments-paginator-#{post.id}"}
+                  =link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', id: "more_comments_#{post.id}", data: {post_id: "#{post.id}", type: "html", value: "#{post.comments.count}"}
     .comment-like-form.row
       .col-sm-1.like-button
         =link_to '', like_post_path(post.id), remote: true,
@@ -31,5 +31,7 @@
         =form_for([post, post.comments.build], remote: true) do |f|
           =f.text_field :content, placeholder: 'Add a comment...',
                                    class: "comment_content",
-                                   id: "comment_content_#{post.id}"
+                                   id: "comment_content_#{post.id}",
+                                   data: { post_id: "#{post.id}",
+                                   value: "#{post.comments.count}" }
           =f.submit 'New Comment', class: 'comment-submit-button' # Hidden with CSS

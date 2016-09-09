@@ -1,0 +1,2 @@
+$("#like_<%= @post.id %>").addClass('glyphicon-heart-empty').removeClass('glyphicon-heart').prop('href', '<%= like_post_path(@post.id) %>')
+$("#likes_<%= @post.id %>").html("<%= j (render partial: 'posts/likes', locals: { post: @post} ) %>")

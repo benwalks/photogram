@@ -24,7 +24,7 @@
                   =link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', id: "more_comments_#{post.id}", data: {post_id: "#{post.id}", type: "html", value: "#{post.comments.count}"}
     .comment-like-form.row
       .col-sm-1.like-button
-        =link_to '', like_post_path(post.id), remote: true,
+        =link_to '', post.voted_on_by?(current_user) ? unlike_post_path(post.id) : like_post_path(post.id), remote: true,
                                               id: "like_#{post.id}",
                                               class: "like glyphicon #{liked_post post}"
       .comment-form.col-sm-11
